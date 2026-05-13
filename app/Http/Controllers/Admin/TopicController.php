@@ -31,7 +31,6 @@ class TopicController extends Controller
     }
 
 
-
     public function edit(Topic $topic)
     {
         return view('topic.edit', compact('topic'));
