@@ -54,6 +54,6 @@ class TopicController extends Controller
 
         $topic->delete();
 
-        return redirect()->route('admin.topics.index')->with('success', 'Topic deleted successfully.');
+        return redirect()->back()->with('success', 'Topic deleted successfully.');
     }
 }
