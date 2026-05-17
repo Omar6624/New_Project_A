@@ -8,7 +8,7 @@ export default defineConfig({
         strictPort: true,
         cors: true, // ✅ allow cross-origin requests
         hmr: {
-            host: '192.168.16.122', // ✅ your LAN IP
+            host: '192.168.16.251', // ✅ your LAN IP
         },
     },
     plugins: [
