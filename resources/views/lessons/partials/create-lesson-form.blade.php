@@ -45,8 +45,7 @@
 
         <div>
             <x-input-label for="content" :value="__('Content')" />
-            <x-text-area-input id="content" name="content" type="text" rows="10" class="mt-1 block w-full"
-                required autofocus autocomplete="content" />
+            <textarea id="content" name="content" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" rows="10">{{ old('content', $lesson->content ?? '') }}</textarea>
             <x-input-error class="mt-2" :messages="$errors->get('content')" />
         </div>
 
@@ -81,3 +80,31 @@
         </div>
     </form>
 </section>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor.create(document.querySelector('#content')).catch(console.error);
+</script>
+
+<style>
+    .ck-editor__editable {
+        min-height: 400px;
+        width: 100%;
+        border-color: #d1d5db !important;
+        border-radius: 0.375rem !important;
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+        background-color: #fff;
+        color: #111827;
+    }
+
+    .dark .ck-editor__editable {
+        background-color: #111827 !important;
+        color: #d1d5db !important;
+        border-color: #374151 !important;
+    }
+
+    .ck-editor__editable:focus {
+        border-color: #6366f1 !important;
+        ring: #6366f1 !important;
+    }
+</style>

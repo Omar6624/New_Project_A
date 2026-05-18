@@ -29,7 +29,6 @@
                     <form method="post" action="{{ route('admin.lessons.publish', $lesson) }}" class="inline">
                         @csrf
                         @method('post')
-
                         <button type="submit"
                             class="text-sm {{ $lesson->is_published ? 'text-purple-600 dark:text-purple-400' : 'text-green-600 dark:text-green-400' }} hover:underline ml-4">
                             {{ $lesson->is_published ? __('Unpublish') : __('Publish') }}</button>

@@ -14,7 +14,7 @@ class LessonController extends Controller
     {
         $lessons = Lesson::with(['topic' => function ($q) {
             $q->select('id', 'name');
-        }])->select('id', 'title')->get();
+        }])->select('id', 'title', 'is_published')->get();
 
         $topics = Topic::select('id', 'name')->get();
 
@@ -47,8 +47,31 @@ class LessonController extends Controller
         return redirect()->back()->with('success', $lesson->title . " is " . $status);
     }
 
-    public function update(LessonValidationRequest $request, $lesson)
+    public function edit(Lesson $lesson)
+    {
+        $topics = Topic::select('id', 'name')->get();
+        return view('lessons.edit', compact('lesson', 'topics'));
+    }
+
+    public function update(LessonValidationRequest $request, Lesson $lesson)
     {
         $validated = $request->validated();
+
+        $validated['slug'] = Str::slug($validated['slug']);
+
+
+        $validated['widget_html'] = $request->input('widget_html') ?? $lesson->widget_html;
+
+        $validated['is_published'] = false;
+
+        $lesson->update($validated);
+
+        return redirect()->route('admin.lessons.index')->with('success', 'Lesson updated successfully.');
+    }
+
+    public function destroy(Lesson $lesson)
+    {
+        $lesson->delete();
+        return redirect()->route('admin.lessons.index')->with('success', 'Lesson deleted successfully.');
     }
 }
