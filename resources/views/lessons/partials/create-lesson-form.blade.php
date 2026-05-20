@@ -93,7 +93,7 @@
         border-color: #d1d5db !important;
         border-radius: 0.375rem !important;
         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
-        background-color: #fff;
+        background-color: #ffff;
         color: #111827;
     }
 
