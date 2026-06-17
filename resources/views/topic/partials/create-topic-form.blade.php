@@ -31,8 +31,8 @@
 
         <div>
             <x-input-label for="description" :value="__('Description')" />
-            <x-text-area-input id="description" name="description" type="text" class="mt-1 block w-full" required
-                autofocus autocomplete="description" />
+            <x-text-area-input id="description" name="description" type="text" class="mt-1 block w-full" autofocus
+                autocomplete="description" />
             <x-input-error class="mt-2" :messages="$errors->get('description')" />
         </div>
 

@@ -19,6 +19,10 @@
                     <x-nav-link :href="route('admin.topics.index')" :active="request()->routeIs('admin.topics.index')">
                         {{ __('Topics') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('admin.lessons.index')" :active="request()->routeIs('admin.lessons.index')">
+                        {{ __('Lessons') }}
+                    </x-nav-link>
                 </div>
             </div>
 

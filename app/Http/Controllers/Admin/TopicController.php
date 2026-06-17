@@ -12,7 +12,9 @@ class TopicController extends Controller
     public function index()
     {
 
-        $topics = Topic::orderBy('order_index')->get();
+        $topics = Topic::with(['lessons' => fn($q) => $q->select('id', 'topic_id', 'title', 'content')])
+            ->orderBy('order_index')
+            ->get();
         return view('topic.index', compact('topics'));
     }
 
